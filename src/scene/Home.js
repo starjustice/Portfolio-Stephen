@@ -1,8 +1,15 @@
+import React from "react";
+
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from "@emotion/react";
 
-import Header from "../component/Header";
+import { Header, Project } from "../component";
 
 export default function Home() {
-  return <Header />;
+  return (
+    <div>
+      <Header />
+      <Project />
+    </div>
+  );
 }

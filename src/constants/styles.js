@@ -3,10 +3,19 @@ export let COLORS = {
   black: "#020202",
   darkGreen: "#43a047",
   teal: "#e0f2f1",
+  darkIndigo: "#1a237e",
 };
 
 export let FONTS_SIZE = {
-  small: 14,
-  medium: 18,
-  large: 24,
+  small: 16,
+  medium: 20,
+  large: 28,
+  xLarge: 36,
+  xxLarge: 48,
+  jumbo: 60,
+};
+
+export const mediaQuery = {
+  maxWidth: `@media (max-width: 608px)`,
+  minWidth: `@media (min-width: 608px)`,
 };
