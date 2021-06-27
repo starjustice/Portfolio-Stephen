@@ -54,10 +54,13 @@ export default function ProjectTimeLine() {
 
         <ImageEvent date="2019-2020" text="DBO Toko App" src={DBO}>
           <div css={styles.projectCompanyContainer}>
-            <Text style={styles.projectCompanyText}>Test Show</Text>
+            <Text style={styles.projectCompanyText}>Kode Fox</Text>
           </div>
           <div>
-            <Text>Test Show</Text>
+            <Text style={styles.projectDescText}>
+              This Project is create somet hting like one is ownesme projeckt
+              lnotjoml like other
+            </Text>
           </div>
         </ImageEvent>
       </Events>
@@ -73,5 +76,7 @@ const styles = {
   }),
   projectCompanyText: css({
     fontsize: FONTS_SIZE.large,
+    marginBottom: 12,
   }),
+  projectDescText: css({ fontsize: FONTS_SIZE.medium }),
 };
