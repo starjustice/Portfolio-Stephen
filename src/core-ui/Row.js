@@ -1,5 +1,7 @@
 import React from "react";
-import { css } from "@emotion/react";
+/** @jsxImportSource @emotion/react */
+
+import { css, jsx } from "@emotion/react";
 
 export default function Row(props) {
   const { style } = props;

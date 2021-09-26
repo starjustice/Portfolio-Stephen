@@ -4,6 +4,8 @@ export let COLORS = {
   darkGreen: "#43a047",
   teal: "#e0f2f1",
   darkIndigo: "#1a237e",
+  indigo: "#c5cae9",
+  darkPurple: "#4a148c",
 };
 
 export let FONTS_SIZE = {

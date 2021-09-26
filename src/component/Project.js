@@ -13,9 +13,10 @@ import {
   themes,
 } from "@merc/react-timeline";
 
-import { Text } from "../core-ui";
+import { Text, Row } from "../core-ui";
 import { DBO } from "../images";
-import { FONTS_SIZE } from "../constants/styles";
+import { COLORS, FONTS_SIZE } from "../constants/styles";
+import { data } from "../data/work";
 
 export default function ProjectTimeLine() {
   return (
@@ -45,24 +46,83 @@ export default function ProjectTimeLine() {
           fontSize: FONTS_SIZE.xLarge + "px",
           fontWeight: 500,
         },
+        textAtom: {
+          marginBottom: "10px",
+          fontSize: FONTS_SIZE.xLarge + "px",
+          fontWeight: 500,
+        },
       }}
     >
       <Events>
-        <Slide right>
-          <TextEvent date="2019" text="**Markdown** is *supported*" />
-        </Slide>
+        {data.map(
+          ({ title, desc, image, technology, color, company, year }) => {
+            return (
+              <>
+                {image ? (
+                  <ImageEvent date={year} text={title} src={image}>
+                    <div css={styles.projectCompanyContainer}>
+                      <Text style={styles.projectCompanyText}>{company}</Text>
+                    </div>
+                    {technology.length > 0 ? (
+                      <Row>
+                        {technology.map((name) => {
+                          return (
+                            <div
+                              css={[
+                                styles.labelContainerTechnology,
+                                { backgroundColor: color },
+                              ]}
+                            >
+                              <Text
+                                style={{
+                                  color:
+                                    color === COLORS.darkPurple
+                                      ? COLORS.white
+                                      : COLORS.black,
+                                }}
+                              >
+                                {name}
+                              </Text>
+                            </div>
+                          );
+                        })}
+                      </Row>
+                    ) : null}
 
-        <ImageEvent date="2019-2020" text="DBO Toko App" src={DBO}>
-          <div css={styles.projectCompanyContainer}>
-            <Text style={styles.projectCompanyText}>Kode Fox</Text>
-          </div>
-          <div>
-            <Text style={styles.projectDescText}>
-              This Project is create somet hting like one is ownesme projeckt
-              lnotjoml like other
-            </Text>
-          </div>
-        </ImageEvent>
+                    <div>
+                      <Text style={styles.projectDescText}>{desc}</Text>
+                    </div>
+                  </ImageEvent>
+                ) : (
+                  <TextEvent date={year} text={title}>
+                    <div css={styles.projectCompanyContainer}>
+                      <Text style={styles.projectCompanyText}>{company}</Text>
+                    </div>
+                    <div>
+                      {technology.length > 0 ? (
+                        <Row>
+                          {technology.map((name) => {
+                            return (
+                              <div
+                                css={[
+                                  styles.labelContainerTechnology,
+                                  { backgroundColor: color },
+                                ]}
+                              >
+                                <Text>{name}</Text>
+                              </div>
+                            );
+                          })}
+                        </Row>
+                      ) : null}
+                      <Text style={styles.projectDescText}>{desc}</Text>
+                    </div>
+                  </TextEvent>
+                )}
+              </>
+            );
+          }
+        )}
       </Events>
     </Timeline>
   );
@@ -78,5 +138,17 @@ const styles = {
     fontsize: FONTS_SIZE.large,
     marginBottom: 12,
   }),
-  projectDescText: css({ fontsize: FONTS_SIZE.medium }),
+  projectDescText: css({
+    fontsize: FONTS_SIZE.medium,
+    textAlign: "justify",
+    marginTop: 10,
+  }),
+  labelContainerText: css({ fontsize: FONTS_SIZE.small }),
+  labelContainerTechnology: css({
+    background: COLORS.indigo,
+    marginRight: 8,
+    padding: 8,
+    borderRadius: 18,
+    fontsize: FONTS_SIZE.small,
+  }),
 };
